@@ -29,9 +29,21 @@ function updateTimer(){
 
     let milliText = timeleft % 1000;
     let secondsText = Math.floor(secondleft) % 60;
+    let minutesText = Math.floor(minutesLeft);
+
+    if (minutesText.toString().length === 1){
+        minutesText = minutesText.toString().padStart(2, '0');
+    }
+    if (secondsText.toString().length === 1){
+        secondsText = secondsText.toString().padStart(2, '0');
+    }
+    if (milliText.toString().length === 1){
+        milliText = milliText.toString().padStart(2, '0');
+    }
 
 
     timerMilliseconds.innerHTML = milliText
     timerSeconds.innerHTML = secondsText
+    timerMinutes.innerHTML = minutesText
     cancelId = requestAnimationFrame(updateTimer);
 }
